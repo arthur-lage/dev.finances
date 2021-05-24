@@ -6,12 +6,19 @@
 
 :root {
   --dark-blue: #363f5f;
+  --green: #49aa26;
+  --light-green: #3dd705;
+  --red: #e92929;
 }
 
 body {
   background-color: #f0f2f5;
 
   font-family: "Poppins", sans-serif;
+}
+
+html {
+  font-size: 93.75%;
 }
 
 .sr-only {
@@ -31,12 +38,71 @@ body {
   margin: auto;
 }
 
+/* ===== TITLES ===== */
+
 h2 {
   margin-top: 3.2rem;
   margin-bottom: 0.8rem;
   color: var(--dark-blue);
 
   font-weight: 400;
+}
+
+/* ===== LINKS AND BUTTONS ===== */
+
+a {
+  background: none;
+  color: var(--green);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--light-green);
+}
+
+button {
+  width: 100%;
+  height: 50px;
+
+  border: none;
+
+  color: white;
+  background: var(--green);
+
+  padding: 0;
+
+  border-radius: 0.25rem;
+
+  cursor: pointer;
+
+  font-family: "Poppins";
+}
+
+button:hover {
+  background: var(--light-green);
+}
+
+.button.new {
+  display: inline-block;
+  margin-bottom: 0.8rem;
+}
+
+.button.cancel {
+  color: var(--red);
+  border: 2px var(--red) solid;
+  border-radius: 0.25rem;
+
+  height: 50px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0.6;
+}
+
+.button.cancel:hover {
+  opacity: 1;
 }
 
 /* ===== HEADER ===== */
@@ -79,6 +145,10 @@ header {
 .card h3 {
   font-weight: normal;
   font-size: 1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .card p {
@@ -94,6 +164,12 @@ header {
 }
 
 /* ===== DATA TABLE ===== */
+
+#transaction {
+  overflow: auto;
+  display: block;
+  width: 100%;
+}
 
 #data-table {
   width: 100%;
@@ -129,6 +205,11 @@ table body tr td:first-child {
   border-radius: 0.25rem 0 0 0.25rem;
 }
 
+table thead tr td:last-child,
+table body tr td:last-child {
+  border-radius: 0 0.25rem 0.25rem 0;
+}
+
 td.description {
   color: var(--dark-blue);
 }
@@ -141,6 +222,41 @@ td.expense {
   color: #e92929;
 }
 
+/* ===== MODAL ===== */
+
+.modal-overlay {
+  width: 100%;
+  height: 100%;
+
+  background-color: rgba(0, 0, 0, 0.7);
+
+  position: fixed;
+  top: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+  visibility: hidden;
+
+  z-index: 999;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal {
+  background: #f0f2f5;
+  padding: 2.4rem;
+  position: relative;
+  z-index: 1;
+  /* width: 90%;
+  max-width: 500px; */
+}
+
 /* ===== FOOTER ===== */
 
 footer {
@@ -148,4 +264,56 @@ footer {
   padding: 4rem 0rem 2rem;
   color: var(--dark-blue);
   opacity: 0.75;
+}
+
+/* ===== FORM =====*/
+
+#form {
+  max-width: 500px;
+}
+
+#form h2 {
+  margin-top: 0;
+}
+
+input {
+  border: 0;
+  border-radius: 0.2rem;
+
+  padding: 0.8rem;
+
+  width: 100%;
+}
+
+.input-group {
+  margin-top: 0.8rem;
+}
+
+.input-group small {
+  opacity: 0.4;
+}
+
+.input-group.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.input-group.actions .button,
+.input-group.actions button {
+  width: 48%;
+}
+
+/* ===== RESPONSIVITY =====*/
+
+@media (min-width: 800px) {
+  html {
+    font-size: 87.5%;
+  }
+
+  #balance {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
 }
